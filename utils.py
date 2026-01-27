@@ -15,7 +15,6 @@ import shutil
 import re
 import os
 from typing import List
-from transformers import AutoTokenizer
 # from common.config import LOG_FETCHER_MAX_LINE_CHAR_LENGTH
 LOG_FETCHER_MAX_LINE_CHAR_LENGTH = 100000
 

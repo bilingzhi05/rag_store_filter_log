@@ -7,7 +7,7 @@ parent_dir = os.path.dirname(current_dir)
 if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 
-from store_filter_log.utils import clean_log_stage_one_multi, convert_file_to_utf8
+from utils import clean_log_stage_one_multi, convert_file_to_utf8
 
 class LogCleaner:
     def __init__(self, log_file_path):

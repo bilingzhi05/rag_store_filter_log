@@ -1,0 +1,13 @@
+[{
+    "module_name": "audiohal",
+    "regex_file_path": "/home/bj17300-049u/work/audiohal_wraper/20260126_210514_audiohal_logset/20260126_210514_audiohal_logset_extracted_contents_regex.txt"
+},
+{
+    "module_name": "libplayer",
+    "regex_file_path": "/home/bj17300-049u/work/LibPlayer_wraper/20260122_173551_LibPlayer_logset/20260122_173551_LibPlayer_logset_extracted_contents_re.txt"
+},
+{
+    "module_name": "mediahal",
+    "regex_file_path": "/home/bj17300-049u/work/mediahal_wraper/20260122_112449_media_hal_logset/20260122_112449_media_hal_logset_extracted_contents_regex.txt"
+}
+]
