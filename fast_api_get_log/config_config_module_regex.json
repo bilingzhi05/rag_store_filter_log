@@ -1,13 +1,16 @@
 [{
     "module_name": "audiohal",
-    "regex_file_path": "/home/bj17300-049u/work/audiohal_wraper/20260126_210514_audiohal_logset/20260126_210514_audiohal_logset_extracted_contents_regex.txt"
+    "regex_file_path2": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/audio_hal_wrapper/20260511_221851_audiohal_logset/20260511_221851_audiohal_logset_extracted_contents_regex.txt",
+    "regex_file_path": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/audio_hal_wrapper/20260513_170018_audiohal_logset/20260513_170018_audiohal_logset_extracted_contents_regex.txt"
 },
 {
-    "module_name": "libplayer",
-    "regex_file_path": "/home/bj17300-049u/work/LibPlayer_wraper/20260122_173551_LibPlayer_logset/20260122_173551_LibPlayer_logset_extracted_contents_re.txt"
+    "module_name": "amp",
+    "regex_file_path2": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/aml_mp_sdk_wrapper/20260511_235255_amp_logset/20260511_235255_amp_logset_extracted_contents_regex.txt",
+    "regex_file_path": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/aml_mp_sdk_wrapper/20260513_161816_amp_logset/20260513_161816_amp_logset_extracted_contents_regex.txt"
 },
 {
     "module_name": "mediahal",
-    "regex_file_path": "/home/bj17300-049u/work/mediahal_wraper/20260122_112449_media_hal_logset/20260122_112449_media_hal_logset_extracted_contents_regex.txt"
+    "regex_file_path2": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/media_hal_wrapper/20260511_225437_mediahal_logset/20260511_225437_mediahal_logset_extracted_contents_regex.txt",
+    "regex_file_path": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/media_hal_wrapper/20260513_172208_mediahal_logset/20260513_172208_mediahal_logset_extracted_contents_regex.txt"
 }
 ]
