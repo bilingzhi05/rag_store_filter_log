@@ -1,7 +1,12 @@
 # rag_store_filter_log
 rag_store_filter_log
 
+
+**作为过滤模块log功能不需要该操作**
 需要在父目录创建 store_log_data 存放log 和 db
+
+**重要**
+需要安装ripgrep-14.1.0 版本，否则会rg会异常报错不支持pcre2
 
 # 使用 fast_api_get_log 方法
 
@@ -15,4 +20,4 @@ LOG_OUTPUT_DIR = "/home/bj17300-049u/work/rag_store_filter_log/fast_api_get_log/
 CONFIG_MODULE_REGEX_FILE = "/home/bj17300-049u/work/rag_store_filter_log/fast_api_get_log/config_config_module_regex.json" #模块和正则表位置
 
 启动命令：
-cd /home/bj17300-049u/work/rag_store_filter_log/fast_api_get_log && nohup uvicorn main:app --host 0.0.0.0 --port 6666 > uvicorn_main.log 2>&1 &
+cd /home/bj17300-049u/work/rag_store_filter_log && nohup uvicorn fast_api_get_log.main:app --host 0.0.0.0 --port 6666 > uvicorn_main.log 2>&1 &
