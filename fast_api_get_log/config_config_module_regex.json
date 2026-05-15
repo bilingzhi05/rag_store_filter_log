@@ -5,7 +5,7 @@
 },
 {
     "module_name": "amp",
-    "logtag_file_path": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/aml_mp_sdk_wrapper/20260515_162002_amp_logset/7_extracted_contents_regex_with_logtag.txt",
+    "regex_file_path": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/aml_mp_sdk_wrapper/20260515_162002_amp_logset/7_extracted_contents_regex_with_logtag.txt",
     "regex_file_path2": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/aml_mp_sdk_wrapper/20260511_235255_amp_logset/20260511_235255_amp_logset_extracted_contents_regex.txt",
     "regex_file_path1": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/aml_mp_sdk_wrapper/20260513_161816_amp_logset/20260513_161816_amp_logset_extracted_contents_regex.txt"
 },
