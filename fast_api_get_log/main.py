@@ -5,10 +5,12 @@ import subprocess
 import shutil
 import csv
 import re
+import zipfile
 from typing import Optional
 from urllib.parse import urlparse
 from urllib.request import urlopen
 import json
+from datetime import datetime
 
 from fastapi import FastAPI, HTTPException, UploadFile, File, Form
 from fastapi.responses import FileResponse
@@ -155,7 +157,7 @@ def filter_log_with_rg(regex_file: str, clean_log_path: str, output_path: str) -
     with open(output_path, "w", encoding="utf-8") as out_f:
         result = subprocess.run(
             # 需要使用rg 14.0.0版本以上
-            ["rg", "-i", "-f", regex_file, clean_log_path],
+            ["rg", "-f", regex_file, clean_log_path],
             stdout=out_f,
             stderr=subprocess.PIPE,
             text=True
@@ -229,15 +231,15 @@ def write_filtered_log_pattern_csv(
         "python_re_invalid_patterns_count": len(invalid_patterns),
     }
 
-def _save_upload_file(upload: UploadFile) -> str:
-    os.makedirs(LOG_OUTPUT_DIR, exist_ok=True)
+def _save_upload_file(upload: UploadFile, output_dir: str) -> str:
+    os.makedirs(output_dir, exist_ok=True)
     filename = os.path.basename(upload.filename or "uploaded.log")
-    saved_path = os.path.join(LOG_OUTPUT_DIR, f"input_{filename}")
+    saved_path = os.path.join(output_dir, f"input_{filename}")
     with open(saved_path, "wb") as out_f:
         shutil.copyfileobj(upload.file, out_f)
     return saved_path
 
-def _process_filter(module_name: str, input_path: str) -> FileResponse:
+def _process_filter(module_name: str, input_path: str, output_dir: str) -> FileResponse:
     input_name = os.path.basename(input_path)
     start_time = time.time()
     module_names = parse_modules(module_name)
@@ -251,7 +253,8 @@ def _process_filter(module_name: str, input_path: str) -> FileResponse:
     clean_path = get_clean_path(input_path)
     log(f"get_clean_path duration: {time.time() - start_time:.2f} seconds")
     all_modules = "_".join(module_names)
-    output_path = os.path.join(LOG_OUTPUT_DIR, f"filter_{all_modules}_{input_name}")
+    
+    output_path = os.path.join(output_dir, f"filter_{all_modules}_{input_name}")
     log(f"filter_log_with_rg: regex_file={regex_file}, \n clean_path={clean_path}, \n output_path={output_path}")
     duration = filter_log_with_rg(regex_file, clean_path, output_path)
     log(f"filter_log_with_rg duration: {duration:.2f} seconds")
@@ -263,7 +266,12 @@ def _process_filter(module_name: str, input_path: str) -> FileResponse:
         max_patterns_per_line=1
     )
     log(f"pattern mapping csv saved: {csv_path}, stats={mapping_stats}")
-    return FileResponse(output_path, filename=os.path.basename(output_path))
+    zip_name = f"result_{all_modules}_{os.path.basename(clean_path)}.zip"
+    zip_path = os.path.join(output_dir, zip_name)
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        zf.write(output_path, arcname=os.path.basename(output_path))
+        zf.write(clean_path, arcname=os.path.basename(clean_path))
+    return FileResponse(zip_path, filename=os.path.basename(zip_path))
 
 @app.get("/invalid-regex")
 def invalid_regex(module_name: str):
@@ -278,10 +286,14 @@ def filter_log(request: FilterRequest):
     os.makedirs(LOG_OUTPUT_DIR, exist_ok=True)
     input_path = resolve_input_log(request.log_file)
     input_name = os.path.basename(input_path)
-    saved_input_path = os.path.join(LOG_OUTPUT_DIR, f"input_{input_name}")
+    now = datetime.now()
+    timestamp = now.strftime('%Y%m%d')
+    output_dir = os.path.join(LOG_OUTPUT_DIR, timestamp, request.module_name)
+    os.makedirs(output_dir, exist_ok=True)
+    saved_input_path = os.path.join(output_dir, f"input_{input_name}")
     if input_path != saved_input_path:
         shutil.copy2(input_path, saved_input_path)
-    return _process_filter(request.module_name, saved_input_path)
+    return _process_filter(request.module_name, saved_input_path, output_dir)
 
 @app.post("/filter-log-upload")
 def filter_log_upload(module_name: str = Form(...), file: UploadFile = File(...)):
@@ -293,9 +305,13 @@ def filter_log_upload(module_name: str = Form(...), file: UploadFile = File(...)
         regex_file, existing_module_names = find_regex_file(module)
         if not regex_file or not os.path.exists(regex_file):
             raise HTTPException(status_code=404, detail=f"regex file not found for module: {module}，数据库保存的模块名有: {existing_module_names}")
-    saved_input_path = _save_upload_file(file)
+    now = datetime.now()
+    timestamp = now.strftime('%Y%m%d')
+    output_dir = os.path.join(LOG_OUTPUT_DIR, timestamp, module_name)
+    os.makedirs(output_dir, exist_ok=True)
+    saved_input_path = _save_upload_file(file, output_dir)
     log(f"上传的文件已保存到: {saved_input_path}")
-    return _process_filter(module_name, saved_input_path)
+    return _process_filter(module_name, saved_input_path, output_dir)
 
 if __name__ == "__main__":
     import uvicorn

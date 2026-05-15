@@ -1,16 +1,18 @@
 [{
     "module_name": "audiohal",
-    "regex_file_path2": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/audio_hal_wrapper/20260511_221851_audiohal_logset/20260511_221851_audiohal_logset_extracted_contents_regex.txt",
-    "regex_file_path": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/audio_hal_wrapper/20260513_170018_audiohal_logset/20260513_170018_audiohal_logset_extracted_contents_regex.txt"
+    "regex_file_path": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/audio_hal_wrapper/20260515_163415_audiohal_logset/7_extracted_contents_regex_with_logtag.txt",
+    "regex_file_path2": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/audio_hal_wrapper/20260513_170018_audiohal_logset/20260513_170018_audiohal_logset_extracted_contents_regex.txt"
 },
 {
     "module_name": "amp",
+    "logtag_file_path": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/aml_mp_sdk_wrapper/20260515_162002_amp_logset/7_extracted_contents_regex_with_logtag.txt",
     "regex_file_path2": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/aml_mp_sdk_wrapper/20260511_235255_amp_logset/20260511_235255_amp_logset_extracted_contents_regex.txt",
-    "regex_file_path": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/aml_mp_sdk_wrapper/20260513_161816_amp_logset/20260513_161816_amp_logset_extracted_contents_regex.txt"
+    "regex_file_path1": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/aml_mp_sdk_wrapper/20260513_161816_amp_logset/20260513_161816_amp_logset_extracted_contents_regex.txt"
 },
 {
     "module_name": "mediahal",
-    "regex_file_path2": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/media_hal_wrapper/20260511_225437_mediahal_logset/20260511_225437_mediahal_logset_extracted_contents_regex.txt",
-    "regex_file_path": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/media_hal_wrapper/20260513_172208_mediahal_logset/20260513_172208_mediahal_logset_extracted_contents_regex.txt"
+    "regex_file_path": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/media_hal_wrapper/20260515_165446_mediahal_logset/7_extracted_contents_regex_with_logtag.txt",
+    "regex_file_path2": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/media_hal_wrapper/20260513_172208_mediahal_logset/20260513_172208_mediahal_logset_extracted_contents_regex_with_logtag.txt",
+    "regex_file_path1": "/home/amlogic/FAE/AutoLog/lingzhi.bi/extract_module_errlog_and_identitication/code/media_hal_wrapper/20260513_172208_mediahal_logset/20260513_172208_mediahal_logset_extracted_contents_regex.txt"
 }
 ]
